@@ -1,0 +1,8 @@
+/.coverage
+/.idea
+/.mypy_cache/
+/.pytest_cache/
+/.venv/
+/dualite_transnumerique.egg-info/
+/reports/
+**/__pycache__/
