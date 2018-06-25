@@ -1,0 +1,13 @@
+language: python
+
+python:
+  - "3.6"
+
+install:
+  - pip install --disable-pip-version-check --upgrade -r requirements.txt -r build_requirements.txt
+
+script:
+  - flake8 fehlmann_dualite tests
+  - mypy --ignore-missing-imports --strict-optional --disallow-untyped-defs dualite_transnumerique
+  - pip3 install --disable-pip-version-check -e .
+  - pytest -vv --cov=dualite_transnumerique --color=yes tests
