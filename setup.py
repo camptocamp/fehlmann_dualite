@@ -37,7 +37,8 @@ setup(
     test_suite="dualite_transnumerique",
     entry_points={
         'console_scripts': [
-            'dualite_transnumerique = dualite_transnumerique.__main__:main'
+            'dualite_transnumerique_shell = dualite_transnumerique.shell:main',
+            'dualite_transnumerique = dualite_transnumerique.ui:main'
         ]
     },
 
