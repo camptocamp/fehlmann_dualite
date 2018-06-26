@@ -14,13 +14,18 @@ class Fenetre(QMainWindow):
     def __init__(self) -> None:
         super().__init__()
         uic.loadUi(os.path.join(HERE, 'fenetre.ui'), self)
-        self._set_colonnes(entree.aleatoire(1000000))
+        self._set_colonnes(entree.fichier(os.path.join(HERE, 'aleatoire1M.txt.gz')))
 
 
     @pyqtSlot(bool)
     def on_fichierRandom1m_toggled(self, enabled: bool) -> None:
         if enabled:
-            self._set_colonnes(entree.aleatoire(1000000))
+            self._set_colonnes(entree.aleatoire(333333))
+
+    @pyqtSlot(bool)
+    def on_fichierAleatoire1m_toggled(self, enabled: bool) -> None:
+        if enabled:
+            self._set_colonnes(entree.fichier(os.path.join(HERE, 'aleatoire1M.txt.gz')))
 
     @pyqtSlot(int)
     def on_secteurBaseMax_valueChanged(self, valeur: int) -> None:

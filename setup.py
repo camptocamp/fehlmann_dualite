@@ -1,6 +1,6 @@
 # coding=utf-8
 import os
-from setuptools import setup, find_packages
+from setuptools import setup
 
 VERSION = '0.1.0'
 HERE = os.path.abspath(os.path.dirname(__file__))
@@ -29,7 +29,7 @@ setup(
     author_email='info@camptocamp.com',
     url='http://n-interaction.ch',
     keywords='math',
-    packages=find_packages(),
+    packages=['dualite_transnumerique'],
     include_package_data=True,
     zip_safe=False,
     install_requires=INSTALL_REQUIRES,

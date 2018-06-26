@@ -43,7 +43,7 @@
           <string>Aléatoire 1M (fixe)</string>
          </property>
          <property name="checked">
-          <bool>false</bool>
+          <bool>true</bool>
          </property>
         </widget>
        </item>
@@ -53,7 +53,7 @@
           <string>Random 1M (nouveau)</string>
          </property>
          <property name="checked">
-          <bool>true</bool>
+          <bool>false</bool>
          </property>
         </widget>
        </item>

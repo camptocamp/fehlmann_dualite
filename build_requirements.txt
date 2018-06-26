@@ -3,3 +3,4 @@ junit2html==021
 mypy==0.610
 pytest==3.6.2
 pytest-cov==2.5.1
+requests==2.19.1

@@ -1,3 +1,4 @@
+import gzip
 import secrets
 from typing import List, Tuple
 
@@ -5,6 +6,7 @@ from . import erreur
 
 
 Entrees = Tuple[List[int], List[int], List[int]]
+
 
 def _aleatoire(nb: int) -> List[int]:
     return [secrets.randbelow(2) for _ in range(nb)]
@@ -22,7 +24,8 @@ def aleatoire(nb: int) -> Entrees:
 
 def fichier(chemin: str) -> Entrees:
     resultats: Entrees = ([], [], [])
-    with open(chemin) as lignes:
+    open_ = gzip.open if chemin.endswith('.gz') else open
+    with open_(chemin, 'rt') as lignes:  # type: ignore
         for ligne in lignes:
             ligne = ligne.strip()
             if ligne != '':
