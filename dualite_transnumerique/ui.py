@@ -10,6 +10,10 @@ from . import entree, calcul, erreur
 HERE = os.path.abspath(os.path.dirname(__file__))
 
 
+def _format_number(number: int) -> str:
+    return "{:,}".format(number).replace(',', "'")
+
+
 class Fenetre(QMainWindow):
     def __init__(self) -> None:
         super().__init__()
@@ -64,8 +68,15 @@ class Fenetre(QMainWindow):
             for i, plus_texte, moins_texte in [(0, self.plusA, self.moinsA),
                                                (1, self.plusB, self.moinsB),
                                                (2, self.plusC, self.moinsC)]:
-                plus_texte.setText(str(plus[i]))
-                moins_texte.setText(str(moins[i]))
+                plus_texte.setText(_format_number(plus[i]))
+                moins_texte.setText(_format_number(moins[i]))
+                plus_texte.setStyleSheet("QLabel { color: black; }")
+                moins_texte.setStyleSheet("QLabel { color: black; }")
+                if plus[i] > moins[i]:
+                    plus_texte.setStyleSheet("QLabel { color: red; }")
+                elif moins[i] > plus[i]:
+                    moins_texte.setStyleSheet("QLabel { color: red; }")
+
             self.statusbar.showMessage("Calcul effectué", 1000)
         except erreur.Erreur as e:
             self.statusbar.showMessage(f"Erreur: {e}", 5000)

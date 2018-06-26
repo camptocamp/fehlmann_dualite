@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>263</height>
+    <height>268</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -24,7 +24,7 @@
        </sizepolicy>
       </property>
       <property name="title">
-       <string>Choix fichier de base</string>
+       <string>Choix fichier de Base</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -76,7 +76,7 @@
     <item row="0" column="1">
      <widget class="QGroupBox" name="groupBox_2">
       <property name="title">
-       <string>Secteur base</string>
+       <string>Secteur de base</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
