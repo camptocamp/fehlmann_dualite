@@ -5,7 +5,6 @@ from . import acces, algo, erreur
 
 def calcul(base: List[int], secteur_debut: int, secteur_fin: int, comparo_debut: int, comparo_fin: int,
            formule_delta: List[int]) -> Tuple[int, int]:
-
     if secteur_debut < 1:
         raise erreur.Erreur("Le début du secteur de base doit être plus grand que 0")
     if secteur_fin <= secteur_debut:

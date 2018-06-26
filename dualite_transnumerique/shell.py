@@ -32,12 +32,13 @@ def _arg_parser() -> argparse.ArgumentParser:
 def main() -> None:
     args = _arg_parser().parse_args()
     if args.aleatoire:
-        valeurs = entree.aleatoire(args.aleatoire)
+        colonnes = entree.aleatoire(args.aleatoire)
     else:
-        valeurs = entree.fichier(args.fichier)
-    plus, moins = calcul.calcul(valeurs, args.secteur[0], args.secteur[1], args.comparos[0],
-                                args.comparos[1], args.formule_delta)
-    print(f"+={plus} -={moins}")
+        colonnes = entree.fichier(args.fichier)
+    for i, valeurs in enumerate(colonnes):
+        plus, moins = calcul.calcul(valeurs, args.secteur[0], args.secteur[1], args.comparos[0],
+                                    args.comparos[1], args.formule_delta)
+        print(f"{chr(ord('A') + i)}: +={plus} -={moins}")
 
 
 if __name__ == "__main__":

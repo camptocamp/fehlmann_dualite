@@ -308,6 +308,11 @@
          <layout class="QGridLayout" name="gridLayout_5">
           <item row="1" column="2">
            <widget class="QLabel" name="moinsA">
+            <property name="font">
+             <font>
+              <pointsize>14</pointsize>
+             </font>
+            </property>
             <property name="text">
              <string>N/A</string>
             </property>
@@ -318,6 +323,11 @@
           </item>
           <item row="1" column="0">
            <widget class="QLabel" name="plusA">
+            <property name="font">
+             <font>
+              <pointsize>14</pointsize>
+             </font>
+            </property>
             <property name="text">
              <string>N/A</string>
             </property>
@@ -370,6 +380,11 @@
           </item>
           <item row="1" column="0">
            <widget class="QLabel" name="plusB">
+            <property name="font">
+             <font>
+              <pointsize>14</pointsize>
+             </font>
+            </property>
             <property name="text">
              <string>N/A</string>
             </property>
@@ -380,6 +395,11 @@
           </item>
           <item row="1" column="1">
            <widget class="QLabel" name="moinsB">
+            <property name="font">
+             <font>
+              <pointsize>14</pointsize>
+             </font>
+            </property>
             <property name="text">
              <string>N/A</string>
             </property>
@@ -432,6 +452,11 @@
           </item>
           <item row="1" column="0">
            <widget class="QLabel" name="plusC">
+            <property name="font">
+             <font>
+              <pointsize>14</pointsize>
+             </font>
+            </property>
             <property name="text">
              <string>N/A</string>
             </property>
@@ -442,6 +467,11 @@
           </item>
           <item row="1" column="1">
            <widget class="QLabel" name="moinsC">
+            <property name="font">
+             <font>
+              <pointsize>14</pointsize>
+             </font>
+            </property>
             <property name="text">
              <string>N/A</string>
             </property>

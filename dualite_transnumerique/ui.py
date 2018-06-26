@@ -5,7 +5,7 @@ from PyQt5.QtWidgets import QMainWindow, QApplication
 import sys
 from typing import List
 
-from . import entree, calcul
+from . import entree, calcul, erreur
 
 HERE = os.path.abspath(os.path.dirname(__file__))
 
@@ -14,13 +14,13 @@ class Fenetre(QMainWindow):
     def __init__(self) -> None:
         super().__init__()
         uic.loadUi(os.path.join(HERE, 'fenetre.ui'), self)
-        self._set_valeurs(entree.aleatoire(1000000))
+        self._set_colonnes(entree.aleatoire(1000000))
 
 
     @pyqtSlot(bool)
     def on_fichierRandom1m_toggled(self, enabled: bool) -> None:
         if enabled:
-            self._set_valeurs(entree.aleatoire(1000000))
+            self._set_colonnes(entree.aleatoire(1000000))
 
     @pyqtSlot(int)
     def on_secteurBaseMax_valueChanged(self, valeur: int) -> None:
@@ -44,21 +44,31 @@ class Fenetre(QMainWindow):
 
     @pyqtSlot()
     def on_execute_clicked(self) -> None:
-        plus, moins = calcul.calcul(self._valeurs, self.secteurBaseMin.value(), self.secteurBaseMax.value(),
-                                    self.comparoMin.value(), self.comparoMax.value(),
-                                    [
-                                        self.formuleDelta1.value(),
-                                        self.formuleDelta2.value(),
-                                        self.formuleDelta3.value(),
-                                        self.formuleDelta4.value()
-                                    ])
-        self.plusA.setText(str(plus))
-        self.moinsA.setText(str(moins))
+        plus = [0, 0, 0]
+        moins = [0, 0, 0]
+        try:
+            for i, valeurs in enumerate(self._colonnes):
+                plus[i], moins[i] = calcul.calcul(valeurs, self.secteurBaseMin.value(), self.secteurBaseMax.value(),
+                                                  self.comparoMin.value(), self.comparoMax.value(),
+                                                  [
+                                                      self.formuleDelta1.value(),
+                                                      self.formuleDelta2.value(),
+                                                      self.formuleDelta3.value(),
+                                                      self.formuleDelta4.value()
+                                                  ])
+            for i, plus_texte, moins_texte in [(0, self.plusA, self.moinsA),
+                                               (1, self.plusB, self.moinsB),
+                                               (2, self.plusC, self.moinsC)]:
+                plus_texte.setText(str(plus[i]))
+                moins_texte.setText(str(moins[i]))
+            self.statusbar.showMessage("Calcul effectué", 1000)
+        except erreur.Erreur as e:
+            self.statusbar.showMessage(f"Erreur: {e}", 5000)
 
-    def _set_valeurs(self, valeurs: List[int]) -> None:
-        self._valeurs = valeurs
+    def _set_colonnes(self, colonnes: entree.Entrees) -> None:
+        self._colonnes = colonnes
         for widget in (self.secteurBaseMin, self.secteurBaseMax):
-            widget.setMaximum(len(valeurs))
+            widget.setMaximum(len(colonnes[0]))
 
 
 def main() -> None:
