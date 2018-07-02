@@ -22,7 +22,7 @@ build: lint mypy test
 	.venv/bin/pip3 install --disable-pip-version-check -e .
 
 
-.PHONE: test
+.PHONY: test
 test:
 	rm -rf reports/coverage
 	.venv/bin/pytest -vv --cov=dualite_transnumerique --junitxml reports/ut.xml --color=yes tests; \
@@ -30,3 +30,11 @@ test:
 	.venv/bin/coverage html -d reports/coverage && \
 	.venv/bin/junit2html reports/ut.xml reports/ut.html && \
 	exit $$status
+
+
+.PHONY: release
+release: build
+	rm -rf dualite_transnumerique.egg-info build dist dualite_transnumerique.egg-info
+	.venv/bin/python ./setup.py bdist_wheel
+	.venv/bin/twine upload dist/*.whl
+

@@ -3,6 +3,8 @@
 /.mypy_cache/
 /.pytest_cache/
 /.venv/
+/build
+/dist
 /dualite_transnumerique.egg-info/
 /reports/
 **/__pycache__/
