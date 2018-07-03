@@ -13,6 +13,8 @@ Le fichier de 1 million d'entrées a été créé en utilisant cette source: htt
 ### Windows
 
 * Installer python 3.6: https://www.python.org/ftp/python/3.6.6/python-3.6.6-amd64-webinstall.exe
+  * cocher "ajouter python au PATH"
 * Depuis un terminal:
   * pip install --upgrade dualite-transnumerique
-  * 
+* Visiter c:\Users\{monUser}\AppData\Local\Programs\Python\Python36\Scripts
+  * Right click sur "dualite_transnumerique" -> "Envoyer sur" -> "bureau"
