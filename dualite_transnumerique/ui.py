@@ -21,7 +21,7 @@ class CalculateurSignals(QObject):
 class Calculateur(QRunnable):
     def __init__(self, parent: QMainWindow, base: List[int], secteur_debut: int, secteur_fin: int,
                  comparo_debut: int, comparo_fin: int,
-                 formule_delta: List[int], plus_texte: QLabel, moins_texte: QLabel):
+                 formule_delta: List[int], plus_texte: QLabel, moins_texte: QLabel) -> None:
         super().__init__()
         self.parent = parent
         self.base = base
@@ -35,7 +35,7 @@ class Calculateur(QRunnable):
         self.signaux = CalculateurSignals()
 
     @pyqtSlot()
-    def run(self):
+    def run(self) -> None:
         try:
             plus, moins = calcul.calcul(self.base, self.secteur_debut, self.secteur_fin,
                                         self.comparo_debut, self.comparo_fin, self.formule_delta)
@@ -63,6 +63,11 @@ class Fenetre(QMainWindow):
     def on_fichierRandom1m_toggled(self, enabled: bool) -> None:
         if enabled:
             self._set_colonnes(entree.aleatoire(333333))
+
+    @pyqtSlot(bool)
+    def on_fichierAleatoire300k_toggled(self, enabled: bool) -> None:
+        if enabled:
+            self._set_colonnes(entree.fichier(os.path.join(HERE, 'aleatoire300K.txt.gz')))
 
     @pyqtSlot(bool)
     def on_fichierAleatoire1m_toggled(self, enabled: bool) -> None:

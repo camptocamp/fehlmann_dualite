@@ -5,7 +5,7 @@ Implémentation de l'algorithme décrit dans http://n-interaction.ch
 
 ## Source aléatoire
 
-Le fichier de 1 million d'entrées a été créé en utilisant cette source: https://www.random.org/
+Le fichier de 300k entrées a été créé en utilisant cette source: https://www.random.org/
 
 
 ## Installation
