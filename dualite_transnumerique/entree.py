@@ -1,4 +1,5 @@
 import gzip
+import re
 import secrets
 from typing import List, Tuple
 
@@ -6,6 +7,8 @@ from . import erreur
 
 
 Entrees = Tuple[List[int], List[int], List[int]]
+
+LIGNE_RE = re.compile(r'([01]).*([01]).*([01])')
 
 
 def _aleatoire(nb: int) -> List[int]:
@@ -29,13 +32,11 @@ def fichier(chemin: str) -> Entrees:
         for ligne in lignes:
             ligne = ligne.strip()
             if ligne != '':
-                colonnes = ligne.split(',')
-                if len(colonnes) != 3:
+                colonnes = LIGNE_RE.match(ligne)
+                if colonnes is None:
                     raise erreur.Erreur(
                         "Fichier invalide: une ligne n'a pas 3 chiffres séparé par des virgules")
-                for i, colonne in enumerate(colonnes):
-                    entier = int(colonne.strip())
-                    if entier not in (0, 1):
-                        raise erreur.Erreur("Fichier invalide: Les nombres doivent êtres des 0 ou des 1")
+                for i, colonne in enumerate(colonnes.groups()):
+                    entier = int(colonne)
                     resultats[i].append(entier)
     return resultats
