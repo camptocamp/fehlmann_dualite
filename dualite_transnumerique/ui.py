@@ -36,8 +36,13 @@ class Fenetre(QMainWindow):
         self.secteurBaseMin.setMaximum(valeur - 1)
 
     @pyqtSlot(int)
+    def on_comparoMin_valueChanged(self, valeur: int) -> None:
+        self.pasComparosValeur.setValue(self.comparoMax.value() - valeur + 1)
+
+    @pyqtSlot(int)
     def on_comparoMax_valueChanged(self, valeur: int) -> None:
         self.comparoMin.setMaximum(valeur - 1)
+        self.pasComparosValeur.setValue(valeur - self.comparoMin.value() + 1)
 
     @pyqtSlot(int)
     def on_formuleDelta1_valueChanged(self, valeur: int) -> None:
@@ -50,6 +55,11 @@ class Fenetre(QMainWindow):
     @pyqtSlot(int)
     def on_formuleDelta3_valueChanged(self, valeur: int) -> None:
         self.formuleDelta4.setMinimum(valeur + 1)
+
+    @pyqtSlot(bool)
+    def on_pasComparos_toggled(self, valeur: bool) -> None:
+        self.pasComparosValeur.setEnabled(valeur)
+        self.pasBaseValeur.setEnabled(not valeur)
 
     @pyqtSlot()
     def on_execute_clicked(self) -> None:
