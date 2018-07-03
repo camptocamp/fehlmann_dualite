@@ -9,6 +9,9 @@ from . import entree, calcul, erreur
 
 HERE = os.path.abspath(os.path.dirname(__file__))
 
+with open(os.path.join(HERE, 'VERSION')) as version:
+    VERSION = version.read().strip()
+
 
 def _format_number(number: int) -> str:
     return "{:,}".format(number).replace(',', "'")
@@ -54,15 +57,21 @@ class Fenetre(QMainWindow):
     def __init__(self) -> None:
         super().__init__()
         uic.loadUi(os.path.join(HERE, 'fenetre.ui'), self)
+        self.setWindowTitle(self.windowTitle() + " " + VERSION)
         self._set_colonnes(entree.fichier(os.path.join(HERE, 'aleatoire1M.txt.gz')))
         self.threads = QThreadPool(self)
         self.a_faire = 0
 
 
     @pyqtSlot(bool)
+    def on_fichierTest1120_toggled(self, enabled: bool) -> None:
+        if enabled:
+            self._set_colonnes(entree.aleatoire(1120))
+
+    @pyqtSlot(bool)
     def on_fichierRandom1m_toggled(self, enabled: bool) -> None:
         if enabled:
-            self._set_colonnes(entree.aleatoire(333333))
+            self._set_colonnes(entree.aleatoire(1000000))
 
     @pyqtSlot(bool)
     def on_fichierAleatoire300k_toggled(self, enabled: bool) -> None:
