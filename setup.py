@@ -2,8 +2,9 @@
 import os
 from setuptools import setup
 
-VERSION = '0.1.1'
 HERE = os.path.abspath(os.path.dirname(__file__))
+with open(os.path.join(HERE, 'dualite_transnumerique', 'VERSION')) as version:
+    VERSION = version.read().strip()
 INSTALL_REQUIRES = [pkg for pkg in open(os.path.join(HERE, 'requirements.txt')).read().splitlines()]
 TEST_REQUIRES = [pkg for pkg in open(os.path.join(HERE, 'build_requirements.txt')).read().splitlines()]
 
@@ -31,8 +32,10 @@ setup(
     keywords='math',
     packages=['dualite_transnumerique'],
     data_files=[
+        'dualite_transnumerique/aleatoire300K.txt.gz',
         'dualite_transnumerique/aleatoire1M.txt.gz',
-        'dualite_transnumerique/fenetre.ui'
+        'dualite_transnumerique/fenetre.ui',
+        'dualite_transnumerique/VERSION'
     ],
     include_package_data=True,
     zip_safe=False,
