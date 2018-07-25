@@ -32,6 +32,7 @@ setup(
     keywords='math',
     packages=['dualite_transnumerique'],
     data_files=[
+        'dualite_transnumerique/aleatoire1120.txt.gz',
         'dualite_transnumerique/aleatoire300K.txt.gz',
         'dualite_transnumerique/aleatoire1M.txt.gz',
         'dualite_transnumerique/fenetre.ui',
