@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>904</width>
-    <height>310</height>
+    <height>351</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -35,6 +35,9 @@
          <property name="text">
           <string>Test 1120 (fixe)</string>
          </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
         </widget>
        </item>
        <item>
@@ -50,7 +53,7 @@
           <string>Aléatoire 1M (fixe)</string>
          </property>
          <property name="checked">
-          <bool>true</bool>
+          <bool>false</bool>
          </property>
         </widget>
        </item>
@@ -61,6 +64,13 @@
          </property>
          <property name="checked">
           <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="afficher">
+         <property name="text">
+          <string>Afficher fichier</string>
          </property>
         </widget>
        </item>
@@ -98,7 +108,7 @@
           <number>1000000</number>
          </property>
          <property name="value">
-          <number>99001</number>
+          <number>1</number>
          </property>
         </widget>
        </item>
@@ -125,7 +135,7 @@
           <number>1000000</number>
          </property>
          <property name="value">
-          <number>100000</number>
+          <number>1000</number>
          </property>
         </widget>
        </item>
@@ -167,7 +177,7 @@
           <number>1</number>
          </property>
          <property name="maximum">
-          <number>399</number>
+          <number>999999999</number>
          </property>
          <property name="value">
           <number>101</number>
@@ -187,7 +197,7 @@
           <number>1</number>
          </property>
          <property name="maximum">
-          <number>1000</number>
+          <number>999999999</number>
          </property>
          <property name="value">
           <number>400</number>
@@ -219,25 +229,6 @@
        <set>Qt::AlignCenter</set>
       </property>
       <layout class="QGridLayout" name="gridLayout_4">
-       <item row="0" column="1">
-        <widget class="QSpinBox" name="pasBaseValeur">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="readOnly">
-          <bool>false</bool>
-         </property>
-         <property name="minimum">
-          <number>1</number>
-         </property>
-         <property name="maximum">
-          <number>1000000</number>
-         </property>
-         <property name="value">
-          <number>1000</number>
-         </property>
-        </widget>
-       </item>
        <item row="1" column="0">
         <widget class="QRadioButton" name="pasComparos">
          <property name="text">
@@ -264,10 +255,43 @@
          </property>
         </widget>
        </item>
+       <item row="0" column="1">
+        <widget class="QSpinBox" name="pasBaseValeur">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="readOnly">
+          <bool>false</bool>
+         </property>
+         <property name="minimum">
+          <number>1</number>
+         </property>
+         <property name="maximum">
+          <number>1000000</number>
+         </property>
+         <property name="value">
+          <number>1000</number>
+         </property>
+        </widget>
+       </item>
        <item row="0" column="0">
         <widget class="QRadioButton" name="pasBase">
          <property name="text">
           <string>Base</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QPushButton" name="reculer">
+         <property name="text">
+          <string>Reculer</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QPushButton" name="avancer">
+         <property name="text">
+          <string>Avancer</string>
          </property>
         </widget>
        </item>
