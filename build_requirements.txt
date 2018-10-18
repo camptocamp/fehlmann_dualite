@@ -3,5 +3,5 @@ junit2html==021
 mypy==0.641
 pytest==3.9.1
 pytest-cov==2.6.0
-requests==2.19.1
+requests==2.20.0
 twine==1.12.1
