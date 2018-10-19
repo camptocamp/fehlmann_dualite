@@ -1,5 +1,5 @@
 flake8==3.5.0
-junit2html==021
+junit2html==022
 mypy==0.641
 pytest==3.9.1
 pytest-cov==2.6.0
